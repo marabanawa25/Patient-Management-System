@@ -1,0 +1,143 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    static class Patient {
+        String name;
+        int age;
+        String disease;
+        String doctor;
+        String appointmentDate;
+
+        public Patient(String pName, int pAge, String pDisease, String pDoctor, String pAppointmentDate) {
+            name = pName;
+            age = pAge;
+            disease = pDisease;
+            doctor = pDoctor;
+            appointmentDate = pAppointmentDate;
+        }
+
+        public void displayInfo() {
+            System.out.println("Name: " + name);
+            System.out.println("Age: " + age);
+            System.out.println("Disease: " + disease);
+            System.out.println("Doctor: " + doctor);
+            System.out.println("Appointment Date: " + appointmentDate);
+            System.out.println("-------------------------");
+        }
+    }
+
+    static ArrayList<Patient> patients = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+
+    static String validUsername = "code of silence";
+    static String validPassword = "AMT3";
+
+    public static void main(String[] args) {
+        System.out.println("=== Welcome to Patient Management System ===\n");
+
+        if (login()) {
+            menu();
+        } else {
+            System.out.println("Too many failed attempts. Exiting program.");
+        }
+    }
+
+    public static boolean login() {
+        int attempts = 3;
+
+        while (attempts > 0) {
+            System.out.print("Enter username: ");
+            String username = scanner.nextLine();
+            System.out.print("Enter password: ");
+            String password = scanner.nextLine();
+
+            if (username.equals(validUsername) && password.equals(validPassword)) {
+                System.out.println("\nLogin successful! Welcome, " + validUsername + ".\n");
+                return true;
+            } else {
+                attempts--;
+                System.out.println("Invalid credentials. Attempts left: " + attempts + "\n");
+            }
+        }
+        return false;
+    }
+
+    public static void menu() {
+        int choice;
+        do {
+            System.out.println("=== Patient Management Menu ===");
+            System.out.println("1. Add Patient");
+            System.out.println("2. View All Patients");
+            System.out.println("3. Search Patient by Name");
+            System.out.println("4. Logout");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    addPatient();
+                    break;
+                case 2:
+                    viewPatients();
+                    break;
+                case 3:
+                    searchPatient();
+                    break;
+                case 4:
+                    System.out.println("Logging out... Goodbye, " + validUsername + "!");
+                    break;
+                default:
+                    System.out.println("Invalid choice! Try again.");
+            }
+        } while (choice != 4);
+    }
+
+    public static void addPatient() {
+        System.out.print("Enter patient name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter patient age: ");
+        int age = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Enter disease: ");
+        String disease = scanner.nextLine();
+        System.out.print("Enter doctor: ");
+        String doctor = scanner.nextLine();
+        System.out.print("Enter appointment date (dd/mm/yyyy): ");
+        String appointmentDate = scanner.nextLine();
+
+        Patient newPatient = new Patient(name, age, disease, doctor, appointmentDate);
+        patients.add(newPatient);
+        System.out.println("Patient added successfully!\n");
+    }
+
+    public static void viewPatients() {
+        if (patients.isEmpty()) {
+            System.out.println("No patients found.\n");
+        } else {
+            System.out.println("=== List of Patients ===");
+            for (Patient p : patients) {
+                p.displayInfo();
+            }
+        }
+    }
+
+    public static void searchPatient() {
+        System.out.print("Enter patient name to search: ");
+        String searchName = scanner.nextLine();
+        boolean found = false;
+
+        for (Patient p : patients) {
+            if (p.name.equalsIgnoreCase(searchName)) {
+                p.displayInfo();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Patient not found.\n");
+        }
+    }
+}
