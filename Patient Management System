@@ -3,14 +3,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    static class Patient {
+    static class Doctor {
         String name;
         int age;
         String disease;
         String doctor;
         String appointmentDate;
 
-        public Patient(String pName, int pAge, String pDisease, String pDoctor, String pAppointmentDate) {
+        public Doctor(String pName, int pAge, String pDisease, String pDoctor, String pAppointmentDate) {
             name = pName;
             age = pAge;
             disease = pDisease;
@@ -28,14 +28,14 @@ public class Main {
         }
     }
 
-    static ArrayList<Patient> patients = new ArrayList<>();
+    static ArrayList<Doctor> patients = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
 
     static String validUsername = "code of silence";
     static String validPassword = "AMT3";
 
     public static void main(String[] args) {
-        System.out.println("=== Welcome to Patient Management System ===\n");
+        System.out.println("=== Welcome to Doctor Staff System ===\n");
 
         if (login()) {
             menu();
@@ -67,10 +67,10 @@ public class Main {
     public static void menu() {
         int choice;
         do {
-            System.out.println("=== Patient Management Menu ===");
-            System.out.println("1. Add Patient");
+            System.out.println("=== Doctor Staff Menu ===");
+            System.out.println("1. Add Doctor");
             System.out.println("2. View All Patients");
-            System.out.println("3. Search Patient by Name");
+            System.out.println("3. Search Doctor by Name");
             System.out.println("4. Logout");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
@@ -108,9 +108,9 @@ public class Main {
         System.out.print("Enter appointment date (dd/mm/yyyy): ");
         String appointmentDate = scanner.nextLine();
 
-        Patient newPatient = new Patient(name, age, disease, doctor, appointmentDate);
+        Doctor newPatient = new Doctor(name, age, disease, doctor, appointmentDate);
         patients.add(newPatient);
-        System.out.println("Patient added successfully!\n");
+        System.out.println("Doctor added successfully!\n");
     }
 
     public static void viewPatients() {
@@ -118,7 +118,7 @@ public class Main {
             System.out.println("No patients found.\n");
         } else {
             System.out.println("=== List of Patients ===");
-            for (Patient p : patients) {
+            for (Doctor p : patients) {
                 p.displayInfo();
             }
         }
@@ -129,7 +129,7 @@ public class Main {
         String searchName = scanner.nextLine();
         boolean found = false;
 
-        for (Patient p : patients) {
+        for (Doctor p : patients) {
             if (p.name.equalsIgnoreCase(searchName)) {
                 p.displayInfo();
                 found = true;
@@ -137,7 +137,7 @@ public class Main {
         }
 
         if (!found) {
-            System.out.println("Patient not found.\n");
+            System.out.println("Doctor not found.\n");
         }
     }
 }

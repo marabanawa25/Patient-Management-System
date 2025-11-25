@@ -1,0 +1,89 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Doctor extends Person {
+    private String doctorID;
+    private String specialization;
+    private List<Patient> assignedPatients;
+
+    public Doctor(String name, int age, String address, String contactNumber,
+                  String doctorID, String specialization) {
+        super(name, age, address, contactNumber);
+        this.doctorID = doctorID;
+        this.specialization = specialization;
+        this.assignedPatients = new ArrayList<>();
+    }
+
+    public String getDoctorID() {
+        return doctorID;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
+    public void assignPatient(Patient patient) {
+        try {
+            if (patient == null) {
+                throw new IllegalArgumentException("Patient cannot be null.");
+            }
+            if (!assignedPatients.contains(patient)) {
+                assignedPatients.add(patient);
+                patient.setAssignedDoctor(this);
+                System.out.println("✓ Patient " + patient.getName() + " assigned to Dr. " + getName());
+            } else {
+                System.out.println("⚠ Patient already assigned to this doctor.");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("✗ Error assigning patient: " + e.getMessage());
+        }
+    }
+
+    public void viewPatients() {
+        System.out.println("\n=== PATIENTS ASSIGNED TO DR. " + getName().toUpperCase() + " ===");
+        if (assignedPatients.isEmpty()) {
+            System.out.println("No patients assigned yet.");
+        } else {
+            for (int i = 0; i < assignedPatients.size(); i++) {
+                Patient p = assignedPatients.get(i);
+                System.out.println((i + 1) + ". " + p.getName() + " (ID: " + p.getPatientID() +
+                        ") - Disease: " + p.getDisease());
+            }
+        }
+    }
+
+    public void updatePatientMedicine(Patient patient, String newMedicine) {
+        try {
+            if (patient == null) {
+                throw new IllegalArgumentException("Patient cannot be null.");
+            }
+            if (!assignedPatients.contains(patient)) {
+                throw new IllegalArgumentException("Patient is not assigned to this doctor.");
+            }
+            patient.setMedicine(newMedicine);
+            System.out.println("✓ Medicine updated successfully for patient: " + patient.getName());
+        } catch (IllegalArgumentException e) {
+            System.out.println("✗ Error updating medicine: " + e.getMessage());
+        }
+    }
+
+    public List<Patient> getAssignedPatients() {
+        return assignedPatients;
+    }
+
+    @Override
+    public void displayInfo() {
+        System.out.println("\n=== DOCTOR INFORMATION ===");
+        System.out.println("Doctor ID: " + doctorID);
+        System.out.println("Name: Dr. " + getName());
+        System.out.println("Age: " + getAge());
+        System.out.println("Address: " + getAddress());
+        System.out.println("Contact: " + getContactNumber());
+        System.out.println("Specialization: " + specialization);
+        System.out.println("Assigned Patients: " + assignedPatients.size());
+    }
+}
