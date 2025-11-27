@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientManagementSystem{
+public class PatientManagementSystem {
     private static final String USERNAME = "code of silence";
     private static final String PASSWORD = "AMT3";
     private static List<Patient> patientList = new ArrayList<>();
@@ -12,7 +12,6 @@ public class PatientManagementSystem{
 
     public static void main(String[] args) {
         initializeDoctors();
-
         if (!login()) {
             System.out.println("Access Denied! Exiting system...");
             return;
@@ -24,7 +23,7 @@ public class PatientManagementSystem{
         }
 
         scanner.close();
-        System.out.println("\nThank you for using Patient Management System!");
+        System.out.println("\n✓ Logged out successfully. Thank you for using Patient Management System!");
     }
 
     private static boolean login() {
@@ -63,31 +62,17 @@ public class PatientManagementSystem{
     }
 
     private static void initializeDoctors() {
-        try {
-            doctorList.add(new Doctor("Dr. Sarah Johnson", 45, "123 Medical Center",
-                    "5551234567", "D001", "Cardiology"));
-            doctorList.add(new Doctor("Dr. Michael Chen", 38, "456 Hospital Ave",
-                    "5552345678", "D002", "Neurology"));
-            doctorList.add(new Doctor("Dr. Emily Rodriguez", 42, "789 Clinic Blvd",
-                    "5553456789", "D003", "Pediatrics"));
-            doctorList.add(new Doctor("Dr. James Williams", 50, "321 Health St",
-                    "5554567890", "D004", "Orthopedics"));
-        } catch (Exception e) {
-            System.out.println("Error initializing doctors: " + e.getMessage());
-        }
+
     }
 
     private static boolean displayMainMenu() {
-        System.out.println("\n╔════════════════════════════════╗");
-        System.out.println("║           MAIN MENU              ║");
-        System.out.println("╚══════════════════════════════════╝");
-        System.out.println("1. Register New Patient");
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║           MAIN MENU                   ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println("1. Add Patient");
         System.out.println("2. View All Patients");
-        System.out.println("3. Schedule Appointment");
-        System.out.println("4. Add Visitor to Patient");
-        System.out.println("5. Update Patient Medicine");
-        System.out.println("6. View Patient Details");
-        System.out.println("7. Exit");
+        System.out.println("3. Search Patient by Name");
+        System.out.println("4. Logout");
         System.out.print("\nEnter your choice: ");
 
         try {
@@ -101,18 +86,10 @@ public class PatientManagementSystem{
                     viewAllPatients();
                     break;
                 case 3:
-                    scheduleAppointment();
+                    searchPatientByName();
                     break;
                 case 4:
-                    addVisitorToPatient();
-                    break;
-                case 5:
-                    updatePatientMedicine();
-                    break;
-                case 6:
-                    viewPatientDetails();
-                    break;
-                case 7:
+                    System.out.println("\n✓ Logging out...");
                     return false;
                 default:
                     System.out.println("\n✗ Invalid choice. Please try again.");
@@ -127,9 +104,9 @@ public class PatientManagementSystem{
     }
 
     private static void registerPatient() {
-        System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║       PATIENT REGISTRATION            ║");
-        System.out.println("╚════════════════════════════════════════╝\n");
+        System.out.println("\n╔═════════════════════════════════════╗");
+        System.out.println("║          ADD NEW PATIENT              ║");
+        System.out.println("╚═══════════════════════════════════════╝\n");
 
         try {
             System.out.print("Enter Patient ID: ");
@@ -155,27 +132,51 @@ public class PatientManagementSystem{
 
             Patient patient = new Patient(name, age, address, contactNumber,
                     patientID, disease, medicine);
-            System.out.print("Enter Doctor's Name: ");
-            String doctorName = scanner.nextLine();
 
-            Doctor selectedDoctor = null;
-            for (Doctor doc : doctorList) {
-                if (doc.getName().equalsIgnoreCase(doctorName) ||
-                        ("Dr. " + doctorName).equalsIgnoreCase(doc.getName())) {
-                    selectedDoctor = doc;
-                    break;
+            System.out.print("\nDo you want to assign a doctor? (yes/no): ");
+            String assignDoctor = scanner.nextLine();
+
+            if (assignDoctor.equalsIgnoreCase("yes")) {
+                System.out.print("Enter Doctor's Full Name: ");
+                String doctorName = scanner.nextLine();
+
+                System.out.print("Enter Doctor ID: ");
+                String doctorID = scanner.nextLine();
+
+                System.out.print("Enter Doctor Age: ");
+                int doctorAge = Integer.parseInt(scanner.nextLine());
+
+                System.out.print("Enter Doctor Address: ");
+                String doctorAddress = scanner.nextLine();
+
+                System.out.print("Enter Doctor Contact Number: ");
+                String doctorContact = scanner.nextLine();
+
+                System.out.print("Enter Doctor Specialization: ");
+                String specialization = scanner.nextLine();
+
+                Doctor selectedDoctor = null;
+                for (Doctor doc : doctorList) {
+                    if (doc.getDoctorID().equalsIgnoreCase(doctorID)) {
+                        selectedDoctor = doc;
+                        System.out.println("\n⚠ Doctor with this ID already exists. Using existing doctor.");
+                        break;
+                    }
                 }
+
+                if (selectedDoctor == null) {
+                    selectedDoctor = new Doctor(doctorName, doctorAge, doctorAddress,
+                            doctorContact, doctorID, specialization);
+                    doctorList.add(selectedDoctor);
+                    System.out.println("\n✓ New doctor added to system.");
+                }
+
+                selectedDoctor.assignPatient(patient);
             }
 
-            if (selectedDoctor != null) {
-                selectedDoctor.assignPatient(patient);
-                patientList.add(patient);
-                System.out.println("\n✓ Patient registered successfully!");
-                patient.displayInfo();
-            } else {
-                System.out.println("\n✗ Doctor not found. Patient registered without doctor assignment.");
-                patientList.add(patient);
-            }
+            patientList.add(patient);
+            System.out.println("\n✓ Patient added successfully!");
+            patient.displayInfo();
 
         } catch (NumberFormatException e) {
             System.out.println("\n✗ Error: Invalid number format.");
@@ -187,25 +188,77 @@ public class PatientManagementSystem{
     }
 
     private static void viewAllPatients() {
-        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("\n╔═════════════════════════════════════╗");
         System.out.println("║         ALL REGISTERED PATIENTS       ║");
-        System.out.println("╚════════════════════════════════════════╝\n");
+        System.out.println("╚═══════════════════════════════════════╝\n");
 
         if (patientList.isEmpty()) {
             System.out.println("No patients registered yet.");
         } else {
+            System.out.println("Total Patients: " + patientList.size() + "\n");
             for (int i = 0; i < patientList.size(); i++) {
                 Patient p = patientList.get(i);
-                System.out.println((i + 1) + ". " + p.getName() + " (ID: " + p.getPatientID() +
-                        ") - Disease: " + p.getDisease());
+                System.out.println("─────────────────────────────────────────");
+                System.out.println((i + 1) + ". Patient ID: " + p.getPatientID());
+                System.out.println("   Name: " + p.getName());
+                System.out.println("   Age: " + p.getAge());
+                System.out.println("   Disease: " + p.getDisease());
+                System.out.println("   Doctor: " + (p.getAssignedDoctor() != null ?
+                        p.getAssignedDoctor().getName() : "Not Assigned"));
             }
+            System.out.println("─────────────────────────────────────────");
+        }
+    }
+
+    private static void searchPatientByName() {
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║        SEARCH PATIENT BY NAME         ║");
+        System.out.println("╚════════════════════════════════════════╝\n");
+
+        try {
+            if (patientList.isEmpty()) {
+                System.out.println("No patients registered yet.");
+                return;
+            }
+
+            System.out.print("Enter patient name to search: ");
+            String searchName = scanner.nextLine();
+
+            List<Patient> foundPatients = new ArrayList<>();
+            for (Patient p : patientList) {
+                if (p.getName().toLowerCase().contains(searchName.toLowerCase())) {
+                    foundPatients.add(p);
+                }
+            }
+
+            if (foundPatients.isEmpty()) {
+                System.out.println("\n✗ No patients found with name containing: " + searchName);
+            } else {
+                System.out.println("\n✓ Found " + foundPatients.size() + " patient(s):\n");
+                for (Patient p : foundPatients) {
+                    p.displayInfo();
+                    System.out.println("\n--- Medical History ---");
+                    System.out.println(p.getMedicalHistory());
+
+                    if (!p.getVisitors().isEmpty()) {
+                        System.out.println("--- Visitors ---");
+                        for (Visitor v : p.getVisitors()) {
+                            System.out.println("• " + v.getName() + " (" + v.getPatientRelation() +
+                                    ") - Visits: " + v.getVisitDates().size());
+                        }
+                    }
+                    System.out.println("═════════════════════════════════════════\n");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("\n✗ Error searching patient: " + e.getMessage());
         }
     }
 
     private static void scheduleAppointment() {
-        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("\n╔═════════════════════════════════════╗");
         System.out.println("║       SCHEDULE APPOINTMENT            ║");
-        System.out.println("╚════════════════════════════════════════╝\n");
+        System.out.println("╚═══════════════════════════════════════╝\n");
 
         try {
             if (patientList.isEmpty()) {
@@ -235,6 +288,7 @@ public class PatientManagementSystem{
             System.out.println("\n✗ Unexpected error: " + e.getMessage());
         }
     }
+
 
     private static void addVisitorToPatient() {
         System.out.println("\n╔═════════════════════════════════════╗");
@@ -371,4 +425,4 @@ public class PatientManagementSystem{
             System.out.println("\n✗ Unexpected error: " + e.getMessage());
         }
     }
-}
+}}

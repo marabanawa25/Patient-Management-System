@@ -1,5 +1,4 @@
 public abstract class Person {
-    // Encapsulated attributes
     private String name;
     private int age;
     private String address;
