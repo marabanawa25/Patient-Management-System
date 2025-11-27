@@ -50,8 +50,7 @@ public class Doctor extends Person {
         } else {
             for (int i = 0; i < assignedPatients.size(); i++) {
                 Patient p = assignedPatients.get(i);
-                System.out.println((i + 1) + ". " + p.getName() + " (ID: " + p.getPatientID() +
-                        ") - Disease: " + p.getDisease());
+                System.out.println((i + 1) + ". " + p.getName() + " - Disease: " + p.getDisease());
             }
         }
     }
@@ -78,11 +77,7 @@ public class Doctor extends Person {
     @Override
     public void displayInfo() {
         System.out.println("\n=== DOCTOR INFORMATION ===");
-        System.out.println("Doctor ID: " + doctorID);
         System.out.println("Name: Dr. " + getName());
-        System.out.println("Age: " + getAge());
-        System.out.println("Address: " + getAddress());
-        System.out.println("Contact: " + getContactNumber());
         System.out.println("Specialization: " + specialization);
         System.out.println("Assigned Patients: " + assignedPatients.size());
     }

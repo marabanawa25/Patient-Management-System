@@ -24,8 +24,8 @@ public abstract class Person {
     }
 
     public void setAge(int age) throws IllegalArgumentException {
-        if (age <= 0 || age > 150) {
-            throw new IllegalArgumentException("Invalid age. Must be between 1 and 150.");
+        if (age < 0 || age > 150) {
+            throw new IllegalArgumentException("Invalid age. Must be between 0 and 150.");
         }
         this.age = age;
     }
@@ -50,6 +50,9 @@ public abstract class Person {
     }
 
     protected boolean validateContact(String contact) {
+        if (contact != null && contact.matches("0+")) {
+            return true;
+        }
         return contact != null && contact.matches("\\d{10,15}");
     }
 

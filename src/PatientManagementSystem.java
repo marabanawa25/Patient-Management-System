@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientManagementSystem {
+public class Main {
     private static final String USERNAME = "code of silence";
     private static final String PASSWORD = "AMT3";
     private static List<Patient> patientList = new ArrayList<>();
@@ -12,6 +12,7 @@ public class PatientManagementSystem {
 
     public static void main(String[] args) {
         initializeDoctors();
+
         if (!login()) {
             System.out.println("Access Denied! Exiting system...");
             return;
@@ -27,9 +28,9 @@ public class PatientManagementSystem {
     }
 
     private static boolean login() {
-        System.out.println("╔════════════════════════════════╗");
-        System.out.println("║   PATIENT MANAGEMENT SYSTEM    ║");
-        System.out.println("╚════════════════════════════════╝\n");
+        System.out.println("╔════════════════════════════════════════╗");
+        System.out.println("║   PATIENT MANAGEMENT SYSTEM - LOGIN   ║");
+        System.out.println("╚════════════════════════════════════════╝\n");
 
         int attempts = 0;
         int maxAttempts = 3;
@@ -66,9 +67,9 @@ public class PatientManagementSystem {
     }
 
     private static boolean displayMainMenu() {
-        System.out.println("\n╔══════════════════════════════════╗");
-        System.out.println("║           MAIN MENU                ║");
-        System.out.println("╚════════════════════════════════════╝");
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║           MAIN MENU                   ║");
+        System.out.println("╚════════════════════════════════════════╝");
         System.out.println("1. Add Patient");
         System.out.println("2. View All Patients");
         System.out.println("3. Search Patient by Name");
@@ -104,9 +105,9 @@ public class PatientManagementSystem {
     }
 
     private static void registerPatient() {
-        System.out.println("╔═════════════════════════════════════╗");
-        System.out.println("║          ADD NEW PATIENT            ║");
-        System.out.println("╚═════════════════════════════════════╝\n");
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║          ADD NEW PATIENT              ║");
+        System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
             System.out.print("Enter Name: ");
@@ -127,49 +128,29 @@ public class PatientManagementSystem {
             System.out.print("Enter Medicine: ");
             String medicine = scanner.nextLine();
 
-            Patient patient = new Patient(name, age, address, contactNumber, disease, medicine);
+            System.out.print("Enter Doctor's Name: ");
+            String doctorName = scanner.nextLine();
 
-            System.out.print("\nDo you want to assign a doctor? (yes/no): ");
-            String assignDoctor = scanner.nextLine();
+            String patientID = "P" + String.format("%03d", patientList.size() + 1);
 
-            if (assignDoctor.equalsIgnoreCase("yes")) {
-                System.out.print("Enter Doctor's Full Name: ");
-                String doctorName = scanner.nextLine();
+            Patient patient = new Patient(name, age, address, contactNumber,
+                    patientID, disease, medicine);
 
-                System.out.print("Enter Doctor ID: ");
-                String doctorID = scanner.nextLine();
-
-                System.out.print("Enter Doctor Age: ");
-                int doctorAge = Integer.parseInt(scanner.nextLine());
-
-                System.out.print("Enter Doctor Address: ");
-                String doctorAddress = scanner.nextLine();
-
-                System.out.print("Enter Doctor Contact Number: ");
-                String doctorContact = scanner.nextLine();
-
-                System.out.print("Enter Doctor Specialization: ");
-                String specialization = scanner.nextLine();
-
-                Doctor selectedDoctor = null;
-                for (Doctor doc : doctorList) {
-                    if (doc.getDoctorID().equalsIgnoreCase(doctorID)) {
-                        selectedDoctor = doc;
-                        System.out.println("\n⚠ Doctor with this ID already exists. Using existing doctor.");
-                        break;
-                    }
+            Doctor selectedDoctor = null;
+            for (Doctor doc : doctorList) {
+                if (doc.getName().equalsIgnoreCase(doctorName)) {
+                    selectedDoctor = doc;
+                    break;
                 }
-
-                if (selectedDoctor == null) {
-                    selectedDoctor = new Doctor(doctorName, doctorAge, doctorAddress,
-                            doctorContact, doctorID, specialization);
-                    doctorList.add(selectedDoctor);
-                    System.out.println("\n✓ New doctor added to system.");
-                }
-
-                selectedDoctor.assignPatient(patient);
             }
 
+            if (selectedDoctor == null) {
+                String doctorID = "D" + String.format("%03d", doctorList.size() + 1);
+                selectedDoctor = new Doctor(doctorName, 0, "N/A", "0000000000", doctorID, "General");
+                doctorList.add(selectedDoctor);
+            }
+
+            selectedDoctor.assignPatient(patient);
             patientList.add(patient);
             System.out.println("\n✓ Patient added successfully!");
             patient.displayInfo();
@@ -184,9 +165,9 @@ public class PatientManagementSystem {
     }
 
     private static void viewAllPatients() {
-        System.out.println("\n╔═════════════════════════════════════╗");
+        System.out.println("\n╔════════════════════════════════════════╗");
         System.out.println("║         ALL REGISTERED PATIENTS       ║");
-        System.out.println("╚═══════════════════════════════════════╝\n");
+        System.out.println("╚════════════════════════════════════════╝\n");
 
         if (patientList.isEmpty()) {
             System.out.println("No patients registered yet.");
@@ -195,8 +176,7 @@ public class PatientManagementSystem {
             for (int i = 0; i < patientList.size(); i++) {
                 Patient p = patientList.get(i);
                 System.out.println("─────────────────────────────────────────");
-                System.out.println((i + 1) + ". Patient ID: " + p.getPatientID());
-                System.out.println("   Name: " + p.getName());
+                System.out.println((i + 1) + ". Name: " + p.getName());
                 System.out.println("   Age: " + p.getAge());
                 System.out.println("   Disease: " + p.getDisease());
                 System.out.println("   Doctor: " + (p.getAssignedDoctor() != null ?
@@ -207,9 +187,9 @@ public class PatientManagementSystem {
     }
 
     private static void searchPatientByName() {
-        System.out.println("\n╔═════════════════════════════════════╗");
+        System.out.println("\n╔════════════════════════════════════════╗");
         System.out.println("║        SEARCH PATIENT BY NAME         ║");
-        System.out.println("╚═══════════════════════════════════════╝\n");
+        System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
             if (patientList.isEmpty()) {
@@ -252,9 +232,9 @@ public class PatientManagementSystem {
     }
 
     private static void scheduleAppointment() {
-        System.out.println("\n╔═════════════════════════════════════╗");
+        System.out.println("\n╔════════════════════════════════════════╗");
         System.out.println("║       SCHEDULE APPOINTMENT            ║");
-        System.out.println("╚═══════════════════════════════════════╝\n");
+        System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
             if (patientList.isEmpty()) {
@@ -285,11 +265,10 @@ public class PatientManagementSystem {
         }
     }
 
-
     private static void addVisitorToPatient() {
-        System.out.println("\n╔═════════════════════════════════════╗");
+        System.out.println("\n╔════════════════════════════════════════╗");
         System.out.println("║         ADD VISITOR TO PATIENT        ║");
-        System.out.println("╚═══════════════════════════════════════╝\n");
+        System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
             if (patientList.isEmpty()) {
@@ -304,25 +283,15 @@ public class PatientManagementSystem {
             if (patientChoice >= 0 && patientChoice < patientList.size()) {
                 Patient patient = patientList.get(patientChoice);
 
-                System.out.print("Enter Visitor ID: ");
-                String visitorID = scanner.nextLine();
+                String visitorID = "V" + String.format("%03d", patient.getVisitors().size() + 1);
 
                 System.out.print("Enter Visitor Name: ");
                 String name = scanner.nextLine();
 
-                System.out.print("Enter Visitor Age: ");
-                int age = Integer.parseInt(scanner.nextLine());
-
-                System.out.print("Enter Visitor Address: ");
-                String address = scanner.nextLine();
-
-                System.out.print("Enter Visitor Contact Number: ");
-                String contact = scanner.nextLine();
-
                 System.out.print("Enter Relation to Patient: ");
                 String relation = scanner.nextLine();
 
-                Visitor visitor = new Visitor(name, age, address, contact, visitorID, relation);
+                Visitor visitor = new Visitor(name, 0, "N/A", "0000000000", visitorID, relation);
                 visitor.setAssociatedPatient(patient);
                 patient.addVisitor(visitor);
 
@@ -346,9 +315,9 @@ public class PatientManagementSystem {
     }
 
     private static void updatePatientMedicine() {
-        System.out.println("\n╔═════════════════════════════════════╗");
+        System.out.println("\n╔════════════════════════════════════════╗");
         System.out.println("║       UPDATE PATIENT MEDICINE         ║");
-        System.out.println("╚═══════════════════════════════════════╝\n");
+        System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
             if (patientList.isEmpty()) {
@@ -384,9 +353,9 @@ public class PatientManagementSystem {
     }
 
     private static void viewPatientDetails() {
-        System.out.println("\n╔═════════════════════════════════════╗");
+        System.out.println("\n╔════════════════════════════════════════╗");
         System.out.println("║        VIEW PATIENT DETAILS           ║");
-        System.out.println("╚═══════════════════════════════════════╝\n");
+        System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
             if (patientList.isEmpty()) {

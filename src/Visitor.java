@@ -81,11 +81,7 @@ public class Visitor extends Person {
     @Override
     public void displayInfo() {
         System.out.println("\n=== VISITOR INFORMATION ===");
-        System.out.println("Visitor ID: " + visitorID);
         System.out.println("Name: " + getName());
-        System.out.println("Age: " + getAge());
-        System.out.println("Address: " + getAddress());
-        System.out.println("Contact: " + getContactNumber());
         System.out.println("Relation to Patient: " + patientRelation);
         System.out.println("Associated Patient: " + (associatedPatient != null ? associatedPatient.getName() : "Not Set"));
         System.out.println("Total Visits: " + visitDates.size());

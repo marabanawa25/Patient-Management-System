@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Patient extends Person {
+    private String patientID;
     private String disease;
     private String medicine;
     private Doctor assignedDoctor;
@@ -14,9 +15,14 @@ public class Patient extends Person {
     public Patient(String name, int age, String address, String contactNumber,
                    String patientID, String disease, String medicine) {
         super(name, age, address, contactNumber);
+        this.patientID = patientID;
         this.disease = disease;
         this.medicine = medicine;
         this.visitors = new ArrayList<>();
+    }
+
+    public String getPatientID() {
+        return patientID;
     }
 
     public String getDisease() {
@@ -83,6 +89,10 @@ public class Patient extends Person {
 
     public String getMedicalHistory() {
         StringBuilder history = new StringBuilder();
+        history.append("Name: ").append(getName()).append("\n");
+        history.append("Age: ").append(getAge()).append("\n");
+        history.append("Address: ").append(getAddress()).append("\n");
+        history.append("Contact: ").append(getContactNumber()).append("\n");
         history.append("Disease: ").append(disease).append("\n");
         history.append("Medicine: ").append(medicine).append("\n");
         history.append("Doctor: ").append(assignedDoctor != null ? assignedDoctor.getName() : "Not Assigned").append("\n");
