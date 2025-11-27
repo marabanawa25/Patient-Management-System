@@ -425,4 +425,4 @@ public class PatientManagementSystem {
             System.out.println("\n✗ Unexpected error: " + e.getMessage());
         }
     }
-}}
+}
