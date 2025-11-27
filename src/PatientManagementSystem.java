@@ -66,9 +66,9 @@ public class PatientManagementSystem {
     }
 
     private static boolean displayMainMenu() {
-        System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║           MAIN MENU                   ║");
-        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println("\n╔══════════════════════════════════╗");
+        System.out.println("║           MAIN MENU                ║");
+        System.out.println("╚════════════════════════════════════╝");
         System.out.println("1. Add Patient");
         System.out.println("2. View All Patients");
         System.out.println("3. Search Patient by Name");
@@ -104,14 +104,11 @@ public class PatientManagementSystem {
     }
 
     private static void registerPatient() {
-        System.out.println("\n╔═════════════════════════════════════╗");
-        System.out.println("║          ADD NEW PATIENT              ║");
-        System.out.println("╚═══════════════════════════════════════╝\n");
+        System.out.println("╔═════════════════════════════════════╗");
+        System.out.println("║          ADD NEW PATIENT            ║");
+        System.out.println("╚═════════════════════════════════════╝\n");
 
         try {
-            System.out.print("Enter Patient ID: ");
-            String patientID = scanner.nextLine();
-
             System.out.print("Enter Name: ");
             String name = scanner.nextLine();
 
@@ -130,8 +127,7 @@ public class PatientManagementSystem {
             System.out.print("Enter Medicine: ");
             String medicine = scanner.nextLine();
 
-            Patient patient = new Patient(name, age, address, contactNumber,
-                    patientID, disease, medicine);
+            Patient patient = new Patient(name, age, address, contactNumber, disease, medicine);
 
             System.out.print("\nDo you want to assign a doctor? (yes/no): ");
             String assignDoctor = scanner.nextLine();
@@ -211,9 +207,9 @@ public class PatientManagementSystem {
     }
 
     private static void searchPatientByName() {
-        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("\n╔═════════════════════════════════════╗");
         System.out.println("║        SEARCH PATIENT BY NAME         ║");
-        System.out.println("╚════════════════════════════════════════╝\n");
+        System.out.println("╚═══════════════════════════════════════╝\n");
 
         try {
             if (patientList.isEmpty()) {
