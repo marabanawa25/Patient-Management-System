@@ -51,7 +51,7 @@ public abstract class Person {
 
     protected boolean validateContact(String contact) {
         if (contact != null && contact.matches("0+")) {
-            return true;
+            return true; // Placeholder value
         }
         return contact != null && contact.matches("\\d{10,15}");
     }

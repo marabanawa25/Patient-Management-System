@@ -29,7 +29,7 @@ public class PatientManagementSystem {
 
     private static boolean login() {
         System.out.println("╔════════════════════════════════════════╗");
-        System.out.println("║   PATIENT MANAGEMENT SYSTEM - LOGIN   ║");
+        System.out.println("║    PATIENT MANAGEMENT SYSTEM - LOGIN   ║");
         System.out.println("╚════════════════════════════════════════╝\n");
 
         int attempts = 0;
@@ -68,12 +68,16 @@ public class PatientManagementSystem {
 
     private static boolean displayMainMenu() {
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║           MAIN MENU                   ║");
+        System.out.println("║            MAIN MENU                   ║");
         System.out.println("╚════════════════════════════════════════╝");
         System.out.println("1. Add Patient");
         System.out.println("2. View All Patients");
         System.out.println("3. Search Patient by Name");
-        System.out.println("4. Logout");
+        System.out.println("4. Schedule Appointment");
+        System.out.println("5. Add Visitor to Patient");
+        System.out.println("6. Update Patient Medicine");
+        System.out.println("7. View Patient Details");
+        System.out.println("8. Logout");
         System.out.print("\nEnter your choice: ");
 
         try {
@@ -90,6 +94,18 @@ public class PatientManagementSystem {
                     searchPatientByName();
                     break;
                 case 4:
+                    scheduleAppointment();
+                    break;
+                case 5:
+                    addVisitorToPatient();
+                    break;
+                case 6:
+                    updatePatientMedicine();
+                    break;
+                case 7:
+                    viewPatientDetails();
+                    break;
+                case 8:
                     System.out.println("\n✓ Logging out...");
                     return false;
                 default:
@@ -106,7 +122,7 @@ public class PatientManagementSystem {
 
     private static void registerPatient() {
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║          ADD NEW PATIENT              ║");
+        System.out.println("║           ADD NEW PATIENT              ║");
         System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
@@ -164,9 +180,10 @@ public class PatientManagementSystem {
         }
     }
 
+
     private static void viewAllPatients() {
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║         ALL REGISTERED PATIENTS       ║");
+        System.out.println("║         ALL REGISTERED PATIENTS        ║");
         System.out.println("╚════════════════════════════════════════╝\n");
 
         if (patientList.isEmpty()) {
@@ -188,7 +205,7 @@ public class PatientManagementSystem {
 
     private static void searchPatientByName() {
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║        SEARCH PATIENT BY NAME         ║");
+        System.out.println("║         SEARCH PATIENT BY NAME         ║");
         System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
@@ -233,7 +250,7 @@ public class PatientManagementSystem {
 
     private static void scheduleAppointment() {
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║       SCHEDULE APPOINTMENT            ║");
+        System.out.println("║        SCHEDULE APPOINTMENT            ║");
         System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
@@ -267,7 +284,7 @@ public class PatientManagementSystem {
 
     private static void addVisitorToPatient() {
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║         ADD VISITOR TO PATIENT        ║");
+        System.out.println("║          ADD VISITOR TO PATIENT        ║");
         System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
@@ -316,7 +333,7 @@ public class PatientManagementSystem {
 
     private static void updatePatientMedicine() {
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║       UPDATE PATIENT MEDICINE         ║");
+        System.out.println("║        UPDATE PATIENT MEDICINE         ║");
         System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
@@ -354,7 +371,7 @@ public class PatientManagementSystem {
 
     private static void viewPatientDetails() {
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║        VIEW PATIENT DETAILS           ║");
+        System.out.println("║         VIEW PATIENT DETAILS           ║");
         System.out.println("╚════════════════════════════════════════╝\n");
 
         try {
