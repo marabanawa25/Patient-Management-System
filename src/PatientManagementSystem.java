@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class PatientManagementSystem {
     private static final String USERNAME = "code of silence";
     private static final String PASSWORD = "AMT3";
     private static List<Patient> patientList = new ArrayList<>();
