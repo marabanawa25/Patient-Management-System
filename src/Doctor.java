@@ -75,15 +75,5 @@ public class Doctor extends Person {
         return assignedPatients;
     }
 
-    @Override
-    public void displayInfo() {
-        System.out.println("\n=== DOCTOR INFORMATION ===");
-        System.out.println("Doctor ID: " + doctorID);
-        System.out.println("Name: Dr. " + getName());
-        System.out.println("Age: " + getAge());
-        System.out.println("Address: " + getAddress());
-        System.out.println("Contact: " + getContactNumber());
-        System.out.println("Specialization: " + specialization);
-        System.out.println("Assigned Patients: " + assignedPatients.size());
-    }
+
 }
