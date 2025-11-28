@@ -1,13 +1,14 @@
 # Patient  Management System
+*Description*
 
-## Description
+## OOP Concepts Applied
 
-OOP Concepts Applied
+## Program Structure
 
-Program Structure
+## How to Run the Program
 
-How to Run the Program
+## Sample Output
 
-Sample Output
+## Author 
 
-Author and Acknowlegement
+## Acknowlegement
