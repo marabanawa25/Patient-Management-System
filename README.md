@@ -13,6 +13,10 @@
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output3.png)
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output4.png)
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output5.png)
-## Author 
+
+## Authors 
+- **Mara Banawa**
+- **AJ Ermitanio**
+- **Tricia Fate Vergara**
 
 ## Acknowlegement
