@@ -9,6 +9,7 @@
 
 ## Sample Output
 ╔════════════════════════════════════════╗
+
 ║    PATIENT MANAGEMENT SYSTEM - LOGIN   ║
 ╚════════════════════════════════════════╝
 
@@ -18,6 +19,7 @@ Password: AMT3
 ✓ Login Successful! Welcome to the system.
 
 ╔════════════════════════════════════════╗
+
 ║            MAIN MENU                   ║
 ╚════════════════════════════════════════╝
 1. Add Patient
