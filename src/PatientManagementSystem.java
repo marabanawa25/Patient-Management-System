@@ -24,7 +24,7 @@ public class PatientManagementSystem {
         }
 
         scanner.close();
-        System.out.println("\n✓ Logged out successfully. Thank you for using Patient Management System!");
+        System.out.println("\n✓ Logged out successfully. Thank you for using the Patient Management System!");
     }
 
     private static boolean login() {
