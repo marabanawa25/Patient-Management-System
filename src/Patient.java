@@ -1,3 +1,4 @@
+// Patient.java - Subclass 1 (Inheritance)
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -11,8 +12,9 @@ public class Patient extends Person {
     private Doctor assignedDoctor;
     private LocalDate appointmentDate;
     private List<Visitor> visitors;
-
-    public Patient(String name, int age, String address, String contactNumber,
+    
+    // Constructor
+    public Patient(String name, int age, String address, String contactNumber, 
                    String patientID, String disease, String medicine) {
         super(name, age, address, contactNumber);
         this.patientID = patientID;
@@ -20,39 +22,41 @@ public class Patient extends Person {
         this.medicine = medicine;
         this.visitors = new ArrayList<>();
     }
-
+    
+    // Getters and Setters
     public String getPatientID() {
         return patientID;
     }
-
+    
     public String getDisease() {
         return disease;
     }
-
+    
     public void setDisease(String disease) {
         this.disease = disease;
     }
-
+    
     public String getMedicine() {
         return medicine;
     }
-
+    
     public void setMedicine(String medicine) {
         this.medicine = medicine;
     }
-
+    
     public Doctor getAssignedDoctor() {
         return assignedDoctor;
     }
-
+    
     public void setAssignedDoctor(Doctor doctor) {
         this.assignedDoctor = doctor;
     }
-
+    
     public LocalDate getAppointmentDate() {
         return appointmentDate;
     }
-
+    
+    // Method Overloading (Polymorphism) - Schedule appointment with date string
     public void scheduleAppointment(String dateString) throws IllegalArgumentException {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -62,7 +66,8 @@ public class Patient extends Person {
             throw new IllegalArgumentException("Invalid date format. Use yyyy-MM-dd format.");
         }
     }
-
+    
+    // Method Overloading - Schedule appointment with LocalDate
     public void scheduleAppointment(LocalDate date) throws IllegalArgumentException {
         if (date.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("Appointment date cannot be in the past.");
@@ -74,7 +79,8 @@ public class Patient extends Person {
             System.out.println("✓ Appointment scheduled successfully for " + date + " (Doctor to be assigned)");
         }
     }
-
+    
+    // Add visitor
     public void addVisitor(Visitor visitor) {
         try {
             if (visitor == null) {
@@ -86,7 +92,8 @@ public class Patient extends Person {
             System.out.println("✗ Error adding visitor: " + e.getMessage());
         }
     }
-
+    
+    // Get medical history
     public String getMedicalHistory() {
         StringBuilder history = new StringBuilder();
         history.append("Name: ").append(getName()).append("\n");
@@ -99,11 +106,12 @@ public class Patient extends Person {
         history.append("Appointment: ").append(appointmentDate != null ? appointmentDate : "Not Scheduled").append("\n");
         return history.toString();
     }
-
+    
     public List<Visitor> getVisitors() {
         return visitors;
     }
-
+    
+    // Method Overriding (Polymorphism)
     @Override
     public void displayInfo() {
         System.out.println("\n=== PATIENT INFORMATION ===");
