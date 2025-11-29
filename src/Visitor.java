@@ -1,3 +1,4 @@
+// Visitor.java - Subclass 3 (Inheritance)
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -9,35 +10,38 @@ public class Visitor extends Person {
     private String patientRelation;
     private List<LocalDate> visitDates;
     private Patient associatedPatient;
-
-    public Visitor(String name, int age, String address, String contactNumber,
+    
+    // Constructor
+    public Visitor(String name, int age, String address, String contactNumber, 
                    String visitorID, String patientRelation) {
         super(name, age, address, contactNumber);
         this.visitorID = visitorID;
         this.patientRelation = patientRelation;
         this.visitDates = new ArrayList<>();
     }
-
+    
+    // Getters and Setters
     public String getVisitorID() {
         return visitorID;
     }
-
+    
     public String getPatientRelation() {
         return patientRelation;
     }
-
+    
     public void setPatientRelation(String patientRelation) {
         this.patientRelation = patientRelation;
     }
-
+    
     public Patient getAssociatedPatient() {
         return associatedPatient;
     }
-
+    
     public void setAssociatedPatient(Patient patient) {
         this.associatedPatient = patient;
     }
-
+    
+    // Check-in visit with date string
     public void checkInVisit(String dateString) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -47,7 +51,8 @@ public class Visitor extends Person {
             System.out.println("✗ Error: Invalid date format. Use yyyy-MM-dd format.");
         }
     }
-
+    
+    // Check-in visit with LocalDate
     public void checkInVisit(LocalDate visitDate) {
         try {
             if (visitDate.isAfter(LocalDate.now())) {
@@ -62,7 +67,8 @@ public class Visitor extends Person {
             System.out.println("✗ Error checking in visit: " + e.getMessage());
         }
     }
-
+    
+    // Get visit history
     public void getVisitHistory() {
         System.out.println("\n=== VISIT HISTORY FOR " + getName().toUpperCase() + " ===");
         if (visitDates.isEmpty()) {
@@ -73,11 +79,12 @@ public class Visitor extends Person {
             }
         }
     }
-
+    
     public List<LocalDate> getVisitDates() {
         return visitDates;
     }
-
+    
+    // Method Overriding (Polymorphism)
     @Override
     public void displayInfo() {
         System.out.println("\n=== VISITOR INFORMATION ===");
