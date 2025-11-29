@@ -1,3 +1,4 @@
+// Doctor.java - Subclass 2 (Inheritance)
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,27 +6,30 @@ public class Doctor extends Person {
     private String doctorID;
     private String specialization;
     private List<Patient> assignedPatients;
-
-    public Doctor(String name, int age, String address, String contactNumber,
+    
+    // Constructor
+    public Doctor(String name, int age, String address, String contactNumber, 
                   String doctorID, String specialization) {
         super(name, age, address, contactNumber);
         this.doctorID = doctorID;
         this.specialization = specialization;
         this.assignedPatients = new ArrayList<>();
     }
-
+    
+    // Getters and Setters
     public String getDoctorID() {
         return doctorID;
     }
-
+    
     public String getSpecialization() {
         return specialization;
     }
-
+    
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
     }
-
+    
+    // Assign patient to doctor
     public void assignPatient(Patient patient) {
         try {
             if (patient == null) {
@@ -42,7 +46,8 @@ public class Doctor extends Person {
             System.out.println("✗ Error assigning patient: " + e.getMessage());
         }
     }
-
+    
+    // View all patients
     public void viewPatients() {
         System.out.println("\n=== PATIENTS ASSIGNED TO DR. " + getName().toUpperCase() + " ===");
         if (assignedPatients.isEmpty()) {
@@ -54,7 +59,8 @@ public class Doctor extends Person {
             }
         }
     }
-
+    
+    // Update patient medicine
     public void updatePatientMedicine(Patient patient, String newMedicine) {
         try {
             if (patient == null) {
@@ -69,11 +75,12 @@ public class Doctor extends Person {
             System.out.println("✗ Error updating medicine: " + e.getMessage());
         }
     }
-
+    
     public List<Patient> getAssignedPatients() {
         return assignedPatients;
     }
-
+    
+    // Method Overriding (Polymorphism)
     @Override
     public void displayInfo() {
         System.out.println("\n=== DOCTOR INFORMATION ===");
