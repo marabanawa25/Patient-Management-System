@@ -21,3 +21,4 @@ Authors
 - Tricia Fate Vergara
 
 Acknowlegement
+We would like to express our sincere gratitude to Mr. Emmanuel Charlie Enriquez for the guidance, support, and knowledge shared throughout the development of this project. Your dedication and feedback have been invaluable to our learning and the completion of this work.
