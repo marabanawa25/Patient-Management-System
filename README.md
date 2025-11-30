@@ -11,6 +11,10 @@ This section gives a straightforward and organized instruction on compiling and 
 
 **I. Compile the Program Files**
 
+Before running the system, ensure that all .java files are compiled.
+
+Steps:
+1. Open your terminal or command prompt.
 
 ## Sample Output
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output1.png)
