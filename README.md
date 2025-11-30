@@ -7,14 +7,14 @@
 Program Structure
 
 ## How to Run the Program
-This section gives a straightforward and organized instruction on compiling and running the Patient Management System through command line. The system enables interaction between doctors, patients, and visitors, each performing their respective actions such as requesting appointments, check-ins, and view records.
+This section gives a straightforward and organized instruction on compile, run and operate the Patient Management System. The goal is to help users to clearly understand how each function is executed within the program from start to finish.
 
-**I. Compile the Program Files**
-
-Before running the system, ensure that all .java files are compiled.
+**I. Compile All Classes**
+Make
 
 Steps:
 1. Open your terminal or command prompt.
+2. Go to the 
 
 ## Sample Output
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output1.png)
