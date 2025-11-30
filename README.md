@@ -1,10 +1,11 @@
 "Patient  Management System"
-
 **Description:** 
 
 ## OOP Concepts Applied
 
-Program Structure
+
+## Program Structure
+
 
 ## How to Run the Program
 This section gives a straightforward and organized instruction on how to operate the Patient Management System from logging in, selecting menu options, managing patient data, scheduling appointments, assigning doctors, and handling visitor records.
