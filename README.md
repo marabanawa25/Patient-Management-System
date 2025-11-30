@@ -1,24 +1,23 @@
 "Patient  Management System"
+**Description**
 
-Description
-
-OOP Concepts Applied
+## OOP Concepts Applied
 
 Program Structure
 
-How to Run the Program
+## How to Run the Program
 
-Sample Output
+## Sample Output
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output1.png)
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output2.png)
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output3.png)
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output4.png)
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output5.png)
 
-Authors 
+## Authors 
 - Mara Banawa
 - AJ Ermitanio
 - Tricia Fate Vergara
 
-Acknowlegement
+## Acknowlegement
 We would like to express our sincere gratitude to Mr. Emmanuel Charlie Enriquez for the guidance, support, and knowledge shared throughout the development of this project. Your dedication and feedback have been invaluable to our learning and the completion of this work.
