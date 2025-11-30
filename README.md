@@ -10,11 +10,9 @@ Program Structure
 This section gives a straightforward and organized instruction on compile, run and operate the Patient Management System. The goal is to help users to clearly understand how each function is executed within the program from start to finish.
 
 **I. Compile All Classes**
-Make
+Make sure
 
-Steps:
-1. Open your terminal or command prompt.
-2. Go to the 
+
 
 ## Sample Output
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output1.png)
