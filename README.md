@@ -8,6 +8,7 @@ Program Structure
 
 ## How to Run the Program
 This section gives a straightforward and organized instruction on compiling and running the Patient Management System through command line. The system enables interaction between doctors, patients, and visitors, each performing their respective actions such as requesting appointments, check-ins, and view records.
+
 **I. Compile the Program Files**
 
 
