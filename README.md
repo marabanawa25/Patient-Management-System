@@ -7,12 +7,34 @@
 Program Structure
 
 ## How to Run the Program
-This section gives a straightforward and organized instruction on compile, run and operate the Patient Management System. The goal is to help users to clearly understand how each function is executed within the program from start to finish.
+This section gives a straightforward and organized instruction on how to operate the Patient Management System from logging in, selecting menu options, managing patient data, scheduling appointments, assigning doctors, and handling visitor records.
 
-**I. Compile All Classes**
-Make sure
+**I. Login**
+When the program starts, the user is required to login using a specific login credentials before accessing the system.
 
+**II. Add Patient**
+The users can register a new patient by entering their personal and medical details.
 
+**III. View All Patients**
+Displays every patient currentlyy registered in the system.
+
+**IV. Search Patient by Name**
+Allows the users to look up a specific patient whether the patient is registered on the hospital or not by searching their name on the system.
+
+**V. Schedule Appointment**
+Users can schedule an appointment for any existing patient on the system.
+
+**VI. Add Visitor to Patient**
+Records a visitor and associates them with a patient registered.
+
+**VII. Update Patient Medicine**
+Allows the users to update or change a patient's prescribed medication.
+
+**VIII. View Patient Details**
+Displays the full information of a selected patient, including appointments, doctors, visitors and medication.
+
+**IX. Logout**
+Safely exits the system.
 
 ## Sample Output
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output1.png)
