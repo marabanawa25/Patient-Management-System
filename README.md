@@ -36,7 +36,7 @@ Allows the users to update or change a patient's prescribed medication.
 Displays the full information of a selected patient, including appointments, doctors, visitors and medication.
 
 **IX. Logout**
-Safely exits the system.
+Users exits from the system safely
 
 ## Sample Output
 ![Dashboard Preview](https://github.com/marabanawa25/Patient-Management-System/blob/master/Output1.png)
