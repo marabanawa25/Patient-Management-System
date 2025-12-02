@@ -4,33 +4,35 @@
 The Patient Management System is a simple Java console program that allows users to add, view, update, search, and schedule. It helps organize basic patient information and appointments using a text-based menu. All data is stored using Java file handling so it can be used again after the program closes.
 
 ## OOP Concepts Applied
-We applied the following OOP Principles
-
-**Encapsulation**
-## Patient Class
+We applied the following OOP Principles:
+### Encapsulation
+**Patient Class**
 private ArrayList<Appointment> appointments
-## Schedule Class
+**Schedule Class**
 private ArrayList<String> availableSchedules
-## HealthcareSystem
+**HealthcareSystem**
 private Schedule schedule
 
-**Inheritance**
-## The Patient class inherits from User
+## Inheritance
+**The Patient class inherits from User**
+
 Patient gets: name, age, contactNumber
 Patient adds: appointments, requestAppointment()
-## The Doctor class inherits from User
+
+**The Doctor class inherits from User**
+
 Doctor gets: name, age, contactNumber
 Doctor adds: specialization, manageSchedule()
 
-**Polymorphism**
-## Patient and Doctor classes both use the same method name displayInfo() but show different outputs.
-## Schedule class uses two versions of addSchedule(), with different parameters.
+## Polymorphism
+**Patient and Doctor classes** both use the same method name displayInfo() but show different outputs.
 
-**Abstract**
-## User class hides common details like name and contact, and only shows what other classes need.
-## HealthcareSystem hides complex processes and provides simple methods like bookAppointment() and registerPatient().
+**Schedule class** uses two versions of addSchedule(), with different parameters.
 
+## Abstract
+**User class** hides common details like name and contact, and only shows what other classes need.
 
+**HealthcareSystem** hides complex processes and provides simple methods like bookAppointment() and registerPatient().
 
 ## Program Structure
 Main Class Structure
