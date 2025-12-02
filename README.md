@@ -33,7 +33,12 @@ Doctor adds: specialization, manageSchedule()
 
 
 ## Program Structure
-
+Main Class Structure
+| Class | Description |
+|:------|:------------|
+|**PatientManagement System**| Main Handle login, Main menu, User interaction |
+|**Person**| Base class (Patient, Doctor, Visitor) |
+|**Patient**| Contains ID, disease, medicine, assigned doctor, oppointment schedule and visitor list |
 
 ## How to Run the Program
 This section gives a straightforward and organized instruction on how to operate the Patient Management System from logging in, selecting menu options, managing patient data, scheduling appointments, assigning doctors, and handling visitor records.
