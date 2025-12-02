@@ -35,7 +35,7 @@ Doctor adds: specialization, manageSchedule()
 **HealthcareSystem** hides complex processes and provides simple methods like bookAppointment() and registerPatient().
 
 ## Program Structure
-Main Class Structure
+Class Structure Overview
 | Class | Description |
 |:------|:------------|
 |**PatientManagement System**| Main Handle login, Main menu, User interaction |
