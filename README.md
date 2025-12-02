@@ -4,36 +4,69 @@
 The Patient Management System is a simple Java console program that allows users to add, view, update, search, and schedule. It helps organize basic patient information and appointments using a text-based menu. All data is stored using Java file handling so it can be used again after the program closes.
 
 ## OOP Concepts Applied
-We applied the following OOP Principles:
+The Patient Management System showcases the Four OOP Principles. The Principles are directly shown by the class design and interactions of the system.
+
 ### Encapsulation
-**Patient Class**
-private ArrayList<Appointment> appointments
-**Schedule Class**
-private ArrayList<String> availableSchedules
-**HealthcareSystem**
-private Schedule schedule
+All classes in the system utilized private attributes to keep patient details, doctor information and visitor history secure. To access or modify these attributes in a secure manner, getter and setter methods are provided by each class which are the basis of encapsulation.
+
+The following classes has private fields:
+
+**Person Class** ->  name, age, address, contactNumber.
+
+**Patient Class** ->  patientID, disease, medicine, assignedDoctor, visitList.
+
+**Doctor Class** ->  doctorID, age, specialization, assignedPatients.
+
+**Visitor Class** ->  visitorID, patientRelation, visitDates.
+
+The use of private attributes guarantees the following:
+
+ - The other class is not able to change the data directly.
+ - Validation is done through setters (e.g., age, validation, validating contact number.)
+ - The system's data integrity is preserved.
 
 ## Inheritance
-**The Patient class inherits from User**
+Allows classes to reuse and extend the structure and behavior of a parent class. In this case, the abstract class Person is the parent class and Patient, Doctor, and Visitor are the subclasses that inherit its characteristics and introduce their own unique features.
 
-Patient gets: name, age, contactNumber
-Patient adds: appointments, requestAppointment()
+**Parent Class:** Person 
 
-**The Doctor class inherits from User**
+Inherited by all subclasses.
 
-Doctor gets: name, age, contactNumber
-Doctor adds: specialization, manageSchedule()
+Shared Attributes:
+
+- name
+- age
+- address
+- contactNumber
+
+Shared Behaviors: 
+
+- getters and setters
+- age and contact validation
+- dispayInfo()
+
+This ensures the cosistency and prevents the duplication of code.
 
 ## Polymorphism
-**Patient and Doctor classes** both use the same method name displayInfo() but show different outputs.
+The system illustrates polymorphism via the abstract method showDetails() in the Person class, which is overridden by its subclasses: Patient, Doctor and Visitor. Despite the fact that these classes have the same method name, each one implements its own particular behavior based on the type of object invoking the method. 
 
-**Schedule class** uses two versions of addSchedule(), with different parameters.
+For instance, when showDetails() is executed on a Patient object, it reveals the patient's illness and the doctor assigned; similarly, when called on a Doctor object, it reveals the doctor's field of specialization; and finally when called by a Visitor, it reveals the visitor's relationship to the patient. This makes the system capable of treating everyone as Person objects while still giving different outputs at runtime. Through the use of the overridden showDetails() method, the program obtains a dynamic, flexible design where different classes can define their particular version of a shared method according to where it is extended  demonstrating the very principle of runtime polymorphism.
 
-## Abstract
-**User class** hides common details like name and contact, and only shows what other classes need.
+## Abstraction
+It is implemented by means of the abstract class Person, which includes common properties and an abstract method:
 
-**HealthcareSystem** hides complex processes and provides simple methods like bookAppointment() and registerPatient().
+**Abstract Method:** 
 
+public abstract void displayInfo();
+
+The Person class does not have an implementation for this method. However, each derived class is required to supply its own version so that the same behavior is given but with a different output.
+
+**System Advantages: **
+
+- The abstract class conceals all internal aspects that are similar (like the method of validating contacts).
+- What is only necessary is made known to the subclasses.
+- Each subclass is only concerned with its particular duties.
+  
 ## Program Structure
 Class Structure Overview
 | Class | Description |
